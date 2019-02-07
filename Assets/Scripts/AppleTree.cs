@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppleTree : MonoBehaviour {
+public class AppleTree : MonoBehaviour
+{
     [Header("Set in Inspector")]
     public GameObject applePrefab;
 
@@ -16,12 +17,19 @@ public class AppleTree : MonoBehaviour {
 
     void Start()
     {
-        
+        Invoke("DropApple", 2f);
     }
 
-	
-	// Update is called once per frame
-	void Update () {
+    void DropApple()
+    {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        Invoke("DropApple", secondsBetweenAppleDrops);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         Vector3 pos = transform.position;
         pos.x += speed * Time.deltaTime;
         transform.position = pos;
@@ -29,9 +37,19 @@ public class AppleTree : MonoBehaviour {
         if (pos.x < -leftAndRightEdge)
         {
             speed = Mathf.Abs(speed);
-        } else if (pos.x > leftAndRightEdge)
+        }
+        else if (pos.x > leftAndRightEdge)
         {
             speed = -Mathf.Abs(speed);
+
         }
-	}
+    }
+
+    void FixedUpdate()
+    {
+        if (Random.value < chanceToChangeDirections)
+        {
+            speed *= -1;
+        }
+    }
 }

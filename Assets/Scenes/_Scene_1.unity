@@ -173,6 +173,11 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114646720410525540, guid: 6ae9c5b956e1cb44092096fda14a5e9f,
+        type: 2}
+      propertyPath: secondsBetweenAppleDrops
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ae9c5b956e1cb44092096fda14a5e9f, type: 2}
   m_IsPrefabAsset: 0
